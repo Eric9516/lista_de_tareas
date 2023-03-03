@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { CreadorDeTareas } from "./Components/CreadorDeTareas";
 import { TablaTareas } from "./Components/TablaTareas";
 import { MostrarTareas } from "./Components/MostrarTareas";
@@ -43,22 +44,24 @@ const App = () => {
 	}, [listaDeTareas]);
 
 	return (
-		<>
-			<CreadorDeTareas crearNuevaTarea={crearNuevaTarea} />
-			<TablaTareas listaDeTareas={listaDeTareas} togleTask={togleTask} />
-			<MostrarTareas
-				isChecked={showCompleted}
-				setShowCompleted={(chequed) => setShowCompleted(chequed)}
-				borrar={borrar}
-			/>
-			{showCompleted && (
-				<TablaTareas
-					listaDeTareas={listaDeTareas}
-					togleTask={togleTask}
-					showCompleted={showCompleted}
+		<main className="bg-dark vh-100 text-white">
+			<div className="container fluid col-md-4 offset-md-4 p-4">
+				<CreadorDeTareas crearNuevaTarea={crearNuevaTarea} />
+				<TablaTareas listaDeTareas={listaDeTareas} togleTask={togleTask} />
+				<MostrarTareas
+					isChecked={showCompleted}
+					setShowCompleted={(chequed) => setShowCompleted(chequed)}
+					borrar={borrar}
 				/>
-			)}
-		</>
+				{showCompleted && (
+					<TablaTareas
+						listaDeTareas={listaDeTareas}
+						togleTask={togleTask}
+						showCompleted={showCompleted}
+					/>
+				)}
+			</div>
+		</main>
 	);
 };
 

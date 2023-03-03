@@ -3,7 +3,7 @@ import React from "react";
 export const Tarea = ({ tarea, togleTask }) => {
 	return (
 		<tr>
-			<td>
+			<td className="d-flex justify-content-between">
 				{tarea.name}
 				<input
 					type="checkbox"
